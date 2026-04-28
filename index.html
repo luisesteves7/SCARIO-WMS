@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>SCARIO Autopeças — Catálogo de Peças</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Barlow:wght@300;400;500;600&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --black:#0a0a0a;
+  --dark:#111111;
+  --dark2:#1a1a1a;
+  --dark3:#222222;
+  --border:#2a2a2a;
+  --border2:#333333;
+  --silver:#c0c0c0;
+  --silver2:#d8d8d8;
+  --silver3:#e8e8e8;
+  --white:#f5f5f5;
+  --red:#cc0000;
+  --red2:#e00000;
+  --text:#999999;
+  --text2:#bbbbbb;
+  --font:'Barlow',sans-serif;
+  --display:'Barlow Condensed',sans-serif;
+  --mono:'Share Tech Mono',monospace;
+}
+html,body{min-height:100vh;background:var(--black);color:var(--text2);font-family:var(--font);font-size:15px}
+ 
+/* HEADER */
+header{background:var(--dark);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100}
+.header-top{background:#000;padding:6px 40px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border)}
+.ht-left{font-family:var(--mono);font-size:10px;color:var(--text);letter-spacing:1px}
+.ht-right{display:flex;align-items:center;gap:20px;font-family:var(--mono);font-size:10px;color:var(--text);letter-spacing:.5px}
+.ht-right a{color:var(--text);text-decoration:none;transition:color .2s}
+.ht-right a:hover{color:var(--silver)}
+.header-main{padding:14px 40px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.logo-wrap{display:flex;align-items:center;gap:14px;flex-shrink:0}
+.logo-shield{width:48px;height:48px;background:#000;border:1px solid var(--border2);border-radius:4px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.logo-shield svg{width:36px;height:36px}
+.logo-text{line-height:1}
+.logo-name{font-family:var(--display);font-size:28px;font-weight:900;color:var(--white);letter-spacing:4px;line-height:1}
+.logo-sub{font-family:var(--mono);font-size:8px;color:var(--red);letter-spacing:3px;text-transform:uppercase;margin-top:2px}
+.search-wrap{flex:1;max-width:600px;position:relative}
+.search-wrap input{width:100%;padding:12px 50px 12px 18px;background:var(--dark2);border:1px solid var(--border2);border-radius:3px;color:var(--white);font-family:var(--font);font-size:14px;outline:none;transition:border-color .2s}
+.search-wrap input::placeholder{color:var(--text)}
+.search-wrap input:focus{border-color:var(--silver)}
+.search-btn{position:absolute;right:0;top:0;bottom:0;width:48px;background:var(--red);border:none;border-radius:0 3px 3px 0;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s}
+.search-btn:hover{background:var(--red2)}
+.search-btn svg{width:18px;height:18px;fill:white}
+.header-nav{padding:0 40px;display:flex;align-items:center;gap:0;border-top:1px solid var(--border)}
+.nav-item{font-family:var(--display);font-size:13px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:11px 18px;color:var(--text2);cursor:pointer;border-bottom:2px solid transparent;transition:all .2s;white-space:nowrap}
+.nav-item:hover{color:var(--white);border-bottom-color:var(--red)}
+.nav-item.active{color:var(--white);border-bottom-color:var(--red)}
+ 
+/* HERO */
+.hero{background:linear-gradient(135deg,#000 0%,#111 50%,#0d0d0d 100%);padding:48px 40px;position:relative;overflow:hidden;border-bottom:1px solid var(--border)}
+.hero::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent,transparent 60px,rgba(255,255,255,.015) 60px,rgba(255,255,255,.015) 61px),repeating-linear-gradient(0deg,transparent,transparent 60px,rgba(255,255,255,.015) 60px,rgba(255,255,255,.015) 61px)}
+.hero::after{content:'';position:absolute;right:-100px;top:-100px;width:500px;height:500px;background:radial-gradient(circle,rgba(204,0,0,.08) 0%,transparent 70%);pointer-events:none}
+.hero-inner{position:relative;z-index:1;max-width:700px}
+.hero-tag{font-family:var(--mono);font-size:10px;color:var(--red);letter-spacing:3px;text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.hero-tag::before{content:'';width:20px;height:1px;background:var(--red)}
+.hero-title{font-family:var(--display);font-size:52px;font-weight:900;color:var(--white);letter-spacing:2px;line-height:.95;text-transform:uppercase;margin-bottom:16px}
+.hero-title span{color:var(--red)}
+.hero-sub{font-family:var(--font);font-size:15px;color:var(--text);line-height:1.6;max-width:500px;margin-bottom:28px}
+.hero-stats{display:flex;gap:32px}
+.hstat{text-align:left}
+.hstat-val{font-family:var(--display);font-size:32px;font-weight:800;color:var(--white);line-height:1}
+.hstat-lbl{font-family:var(--mono);font-size:9px;color:var(--text);letter-spacing:1px;text-transform:uppercase;margin-top:2px}
+ 
+/* MAIN LAYOUT */
+.main-wrap{display:flex;min-height:calc(100vh - 200px);gap:0}
+ 
+/* SIDEBAR */
+.sidebar{width:240px;flex-shrink:0;background:var(--dark);border-right:1px solid var(--border);padding:24px 0}
+.sb-section{margin-bottom:8px}
+.sb-title{font-family:var(--display);font-size:11px;font-weight:700;letter-spacing:2px;color:var(--text);text-transform:uppercase;padding:0 20px 8px;border-bottom:1px solid var(--border);margin-bottom:8px}
+.sb-input{width:calc(100% - 32px);margin:0 16px 12px;padding:8px 12px;background:var(--dark2);border:1px solid var(--border2);border-radius:3px;color:var(--text2);font-family:var(--mono);font-size:11px;outline:none;transition:border-color .2s}
+.sb-input:focus{border-color:var(--silver)}
+.sb-input::placeholder{color:var(--text)}
+.sb-select{width:calc(100% - 32px);margin:0 16px 12px;padding:8px 12px;background:var(--dark2);border:1px solid var(--border2);border-radius:3px;color:var(--text2);font-family:var(--mono);font-size:11px;outline:none;cursor:pointer;appearance:none}
+.filter-btn{width:calc(100% - 32px);margin:8px 16px 0;padding:10px;background:var(--red);border:none;border-radius:3px;color:#fff;font-family:var(--display);font-size:14px;font-weight:700;letter-spacing:2px;cursor:pointer;transition:background .2s}
+.filter-btn:hover{background:var(--red2)}
+.clear-btn{width:calc(100% - 32px);margin:6px 16px 0;padding:8px;background:transparent;border:1px solid var(--border2);border-radius:3px;color:var(--text);font-family:var(--mono);font-size:10px;letter-spacing:1px;cursor:pointer;transition:all .2s}
+.clear-btn:hover{border-color:var(--silver);color:var(--silver2)}
+ 
+/* CONTENT */
+.content{flex:1;padding:24px 32px;min-width:0}
+.content-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid var(--border)}
+.content-title{font-family:var(--display);font-size:20px;font-weight:700;color:var(--white);letter-spacing:1px}
+.content-count{font-family:var(--mono);font-size:11px;color:var(--text);letter-spacing:.5px}
+.sort-wrap{display:flex;align-items:center;gap:8px}
+.sort-lbl{font-family:var(--mono);font-size:10px;color:var(--text);letter-spacing:.5px}
+.sort-sel{padding:6px 10px;background:var(--dark2);border:1px solid var(--border2);border-radius:3px;color:var(--text2);font-family:var(--mono);font-size:10px;outline:none;cursor:pointer}
+ 
+/* GRID */
+.parts-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px}
+.part-card{background:var(--dark2);border:1px solid var(--border);border-radius:4px;overflow:hidden;transition:all .25s;cursor:pointer;position:relative}
+.part-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--border);transition:background .25s}
+.part-card:hover{border-color:var(--border2);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.4)}
+.part-card:hover::before{background:var(--red)}
+.card-img{height:140px;background:var(--dark3);display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--border);position:relative;overflow:hidden}
+.card-img-placeholder{display:flex;flex-direction:column;align-items:center;gap:8px;opacity:.3}
+.card-img-placeholder svg{width:48px;height:48px;fill:var(--silver)}
+.card-img-placeholder span{font-family:var(--mono);font-size:9px;color:var(--silver);letter-spacing:1px}
+.card-sku{position:absolute;top:8px;left:8px;font-family:var(--mono);font-size:8px;color:var(--text);background:rgba(0,0,0,.7);padding:2px 6px;border-radius:2px;letter-spacing:.5px}
+.card-stock{position:absolute;top:8px;right:8px;font-family:var(--mono);font-size:8px;padding:2px 6px;border-radius:2px;letter-spacing:.5px}
+.card-stock.in{background:rgba(0,160,80,.15);color:#00c060;border:1px solid rgba(0,160,80,.3)}
+.card-stock.low{background:rgba(200,120,0,.15);color:#e09000;border:1px solid rgba(200,120,0,.3)}
+.card-stock.out{background:rgba(200,0,0,.12);color:#cc4444;border:1px solid rgba(200,0,0,.25)}
+.card-body{padding:12px 14px 14px}
+.card-fab{font-family:var(--mono);font-size:9px;color:var(--red);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:4px}
+.card-name{font-family:var(--display);font-size:16px;font-weight:700;color:var(--white);line-height:1.2;margin-bottom:8px;letter-spacing:.5px}
+.card-loc{font-family:var(--mono);font-size:9px;color:var(--text);letter-spacing:.5px;margin-bottom:10px;display:flex;align-items:center;gap:4px}
+.card-loc svg{width:10px;height:10px;fill:var(--text);flex-shrink:0}
+.card-bottom{display:flex;align-items:center;justify-content:space-between}
+.card-price{font-family:var(--display);font-size:22px;font-weight:800;color:var(--white);letter-spacing:.5px}
+.card-price-lbl{font-family:var(--mono);font-size:8px;color:var(--text);letter-spacing:.5px;margin-bottom:1px}
+.card-qty{font-family:var(--mono);font-size:9px;color:var(--text);text-align:right}
+.card-qty-val{font-family:var(--display);font-size:14px;color:var(--silver2);font-weight:600}
+ 
+/* PAGINATION */
+.pagination{display:flex;align-items:center;justify-content:center;gap:6px;padding:32px 0 16px;flex-wrap:wrap}
+.pg-btn{font-family:var(--mono);font-size:11px;padding:7px 12px;border-radius:3px;border:1px solid var(--border2);background:var(--dark2);color:var(--text2);cursor:pointer;transition:all .2s;letter-spacing:.5px}
+.pg-btn:hover{border-color:var(--silver);color:var(--white)}
+.pg-btn.active{background:var(--red);border-color:var(--red);color:#fff}
+.pg-btn:disabled{opacity:.3;cursor:not-allowed}
+.pg-info{font-family:var(--mono);font-size:10px;color:var(--text);letter-spacing:.5px;padding:0 12px}
+ 
+/* MODAL */
+.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:500;display:none;align-items:center;justify-content:center;padding:20px}
+.modal-bg.open{display:flex}
+.modal{width:100%;max-width:560px;background:var(--dark);border:1px solid var(--border2);border-radius:6px;overflow:hidden;animation:modalIn .25s ease}
+@keyframes modalIn{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:scale(1)}}
+.modal-head{background:#000;padding:20px 24px;display:flex;align-items:flex-start;justify-content:space-between;border-bottom:1px solid var(--border)}
+.modal-head-left{}
+.modal-sku{font-family:var(--mono);font-size:10px;color:var(--red);letter-spacing:2px;margin-bottom:6px}
+.modal-name{font-family:var(--display);font-size:26px;font-weight:800;color:var(--white);letter-spacing:1px;line-height:1.1}
+.modal-close{background:none;border:1px solid var(--border2);color:var(--text);width:32px;height:32px;border-radius:3px;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s}
+.modal-close:hover{border-color:var(--red);color:var(--red)}
+.modal-body{padding:24px}
+.modal-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px}
+.modal-field{background:var(--dark2);border:1px solid var(--border);border-radius:3px;padding:12px 14px}
+.mf-lbl{font-family:var(--mono);font-size:8px;color:var(--text);letter-spacing:2px;text-transform:uppercase;margin-bottom:4px}
+.mf-val{font-family:var(--display);font-size:18px;font-weight:700;color:var(--white);letter-spacing:.5px}
+.mf-val.price{color:var(--white);font-size:24px}
+.mf-val.green{color:#00c060}
+.mf-val.amber{color:#e09000}
+.mf-val.red-c{color:#cc4444}
+.modal-loc{background:var(--dark3);border:1px solid var(--border);border-radius:3px;padding:12px 14px;display:flex;align-items:center;gap:10px}
+.loc-icon{width:32px;height:32px;background:rgba(204,0,0,.1);border:1px solid rgba(204,0,0,.2);border-radius:3px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.loc-icon svg{width:16px;height:16px;fill:var(--red)}
+.loc-text{}
+.loc-lbl{font-family:var(--mono);font-size:8px;color:var(--text);letter-spacing:2px;text-transform:uppercase}
+.loc-val{font-family:var(--display);font-size:20px;font-weight:800;color:var(--white);letter-spacing:2px}
+ 
+/* LOADING */
+.loading{display:flex;align-items:center;justify-content:center;padding:80px;flex-direction:column;gap:16px}
+.loading-spinner{width:40px;height:40px;border:2px solid var(--border2);border-top-color:var(--red);border-radius:50%;animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.loading-txt{font-family:var(--mono);font-size:11px;color:var(--text);letter-spacing:2px}
+ 
+/* EMPTY */
+.empty{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:80px;gap:12px;opacity:.5}
+.empty svg{width:56px;height:56px;fill:var(--text)}
+.empty-txt{font-family:var(--display);font-size:20px;color:var(--text2);letter-spacing:1px}
+.empty-sub{font-family:var(--mono);font-size:10px;color:var(--text);letter-spacing:1px}
+ 
+/* FOOTER */
+footer{background:#000;border-top:1px solid var(--border);padding:32px 40px;margin-top:40px}
+.footer-inner{display:flex;align-items:center;justify-content:space-between}
+.footer-logo{font-family:var(--display);font-size:22px;font-weight:900;color:var(--white);letter-spacing:4px}
+.footer-logo span{color:var(--red)}
+.footer-txt{font-family:var(--mono);font-size:9px;color:var(--text);letter-spacing:1px;text-align:center}
+.footer-line{width:1px;height:32px;background:var(--border)}
+ 
+@media(max-width:768px){
+  .header-main{padding:12px 16px;flex-wrap:wrap}
+  .hero{padding:32px 16px}
+  .hero-title{font-size:36px}
+  .main-wrap{flex-direction:column}
+  .sidebar{width:100%;border-right:none;border-bottom:1px solid var(--border)}
+  .content{padding:16px}
+  .parts-grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr))}
+  .header-nav{padding:0 16px;overflow-x:auto}
+  footer{padding:24px 16px}
+  .footer-inner{flex-direction:column;gap:16px;text-align:center}
+}
+</style>
+</head>
+<body>
+ 
+<header>
+  <div class="header-top">
+    <div class="ht-left">⚙ SCARIO AUTOPEÇAS — CATÁLOGO ONLINE</div>
+    <div class="ht-right">
+      <span>📍 São Paulo, SP</span>
+      <span>|</span>
+      <span>☎ (11) 9999-9999</span>
+      <span>|</span>
+      <span>✉ contato@scario.com.br</span>
+    </div>
+  </div>
+  <div class="header-main">
+    <div class="logo-wrap">
+      <div class="logo-shield">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <path d="M50 5 L90 20 L90 55 Q90 80 50 95 Q10 80 10 55 L10 20 Z" fill="#111" stroke="#333" stroke-width="2"/>
+          <path d="M50 12 L83 25 L83 55 Q83 76 50 89 Q17 76 17 55 L17 25 Z" fill="#0a0a0a" stroke="#222" stroke-width="1"/>
+          <text x="50" y="34" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-size="14" font-weight="900" fill="#f0f0f0" letter-spacing="3">SCARIO</text>
+          <path d="M35 45 Q40 38 50 42 Q60 46 58 55 Q56 62 48 60 Q40 58 42 50 Q44 44 52 46 Q60 48 62 58 Q64 68 55 72 Q45 76 38 68" fill="none" stroke="#cc0000" stroke-width="4" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="logo-text">
+        <div class="logo-name">SCARIO</div>
+        <div class="logo-sub">Autopeças · Catálogo</div>
+      </div>
+    </div>
+    <div class="search-wrap">
+      <input type="text" id="main-search" placeholder="Buscar por nome, SKU ou fabricante..." oninput="onMainSearch()">
+      <button class="search-btn" onclick="doSearch()">
+        <svg viewBox="0 0 24 24"><path d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z" stroke="white" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="header-nav">
+    <div class="nav-item active" onclick="setNav(this,'')">Todos os Produtos</div>
+    <div class="nav-item" onclick="setNav(this,'Motor')">Motor</div>
+    <div class="nav-item" onclick="setNav(this,'Freios')">Freios</div>
+    <div class="nav-item" onclick="setNav(this,'Suspensão')">Suspensão</div>
+    <div class="nav-item" onclick="setNav(this,'Elétrica')">Elétrica</div>
+    <div class="nav-item" onclick="setNav(this,'Filtros')">Filtros</div>
+    <div class="nav-item" onclick="setNav(this,'Transmissão')">Transmissão</div>
+  </div>
+</header>
+ 
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">Catálogo Digital</div>
+    <div class="hero-title">Encontre a peça<br>que você <span>precisa</span></div>
+    <div class="hero-sub">Mais de 20.000 peças disponíveis em estoque. Busque por nome, SKU ou fabricante e encontre exatamente o que precisa.</div>
+    <div class="hero-stats">
+      <div class="hstat"><div class="hstat-val" id="hero-total">—</div><div class="hstat-lbl">Peças no catálogo</div></div>
+      <div class="hstat"><div class="hstat-val" id="hero-fab">—</div><div class="hstat-lbl">Fabricantes</div></div>
+      <div class="hstat"><div class="hstat-val" id="hero-stock">—</div><div class="hstat-lbl">Em estoque</div></div>
+    </div>
+  </div>
+</div>
+ 
+<div class="main-wrap">
+  <aside class="sidebar">
+    <div class="sb-section">
+      <div class="sb-title">Filtros</div>
+      <input class="sb-input" id="filter-fab" placeholder="Fabricante..." oninput="applyFilters()">
+      <input class="sb-input" id="filter-sku" placeholder="Código SKU..." oninput="applyFilters()">
+      <input class="sb-input" id="filter-preco-min" placeholder="Preço mínimo R$" type="number" oninput="applyFilters()">
+      <input class="sb-input" id="filter-preco-max" placeholder="Preço máximo R$" type="number" oninput="applyFilters()">
+    </div>
+    <div class="sb-section" style="margin-top:8px">
+      <div class="sb-title">Disponibilidade</div>
+      <select class="sb-select" id="filter-stock" onchange="applyFilters()">
+        <option value="">Todos</option>
+        <option value="in">Em estoque (10+)</option>
+        <option value="low">Estoque baixo (1-9)</option>
+        <option value="out">Sem estoque</option>
+      </select>
+    </div>
+    <div class="sb-section" style="margin-top:8px">
+      <div class="sb-title">Ordenar</div>
+      <select class="sb-select" id="sort-by" onchange="applyFilters()">
+        <option value="nome">Nome A–Z</option>
+        <option value="nome-desc">Nome Z–A</option>
+        <option value="preco">Menor preço</option>
+        <option value="preco-desc">Maior preço</option>
+        <option value="estoque">Maior estoque</option>
+      </select>
+    </div>
+    <button class="clear-btn" onclick="clearFilters()">✕ Limpar filtros</button>
+  </aside>
+ 
+  <main class="content">
+    <div class="content-header">
+      <div>
+        <div class="content-title">Catálogo de Peças</div>
+        <div class="content-count" id="result-count">Carregando...</div>
+      </div>
+    </div>
+    <div id="parts-grid" class="parts-grid">
+      <div class="loading"><div class="loading-spinner"></div><div class="loading-txt">CARREGANDO CATÁLOGO...</div></div>
+    </div>
+    <div class="pagination" id="pagination"></div>
+  </main>
+</div>
+ 
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">SC<span>A</span>RIO</div>
+    <div class="footer-txt">© 2025 SCARIO Autopeças · Todos os direitos reservados<br>Catálogo digital — consulte disponibilidade com nossa equipe</div>
+    <div class="footer-line"></div>
+    <div style="font-family:var(--mono);font-size:9px;color:var(--text);letter-spacing:.5px;text-align:right">São Paulo, SP<br>contato@scario.com.br</div>
+  </div>
+</footer>
+ 
+<!-- MODAL -->
+<div class="modal-bg" id="modal-bg" onclick="closeModal(event)">
+  <div class="modal" id="modal">
+    <div class="modal-head">
+      <div class="modal-head-left">
+        <div class="modal-sku" id="m-sku"></div>
+        <div class="modal-name" id="m-name"></div>
+      </div>
+      <button class="modal-close" onclick="closeModalBtn()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-grid">
+        <div class="modal-field">
+          <div class="mf-lbl">Fabricante</div>
+          <div class="mf-val" id="m-fab"></div>
+        </div>
+        <div class="modal-field">
+          <div class="mf-lbl">Preço de Venda</div>
+          <div class="mf-val price" id="m-preco"></div>
+        </div>
+        <div class="modal-field">
+          <div class="mf-lbl">Qtd. em Estoque</div>
+          <div class="mf-val" id="m-qty"></div>
+        </div>
+        <div class="modal-field">
+          <div class="mf-lbl">Status</div>
+          <div class="mf-val" id="m-status"></div>
+        </div>
+      </div>
+      <div class="modal-loc">
+        <div class="loc-icon"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div>
+        <div class="loc-text">
+          <div class="loc-lbl">Localização no Corredor</div>
+          <div class="loc-val" id="m-loc"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+ 
+<script>
+const SUPABASE_URL = 'https://obepikjlytpremxbxjth.supabase.co';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9iZXBpa2pseXRwcmVteGJ4anRoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY4ODM1OTIsImV4cCI6MjA5MjQ1OTU5Mn0.oYeKTf1olL1aqBBV-amT2qiCZsfKTAOA-b73zI109ss';
+const PAGE_SIZE = 24;
+let currentPage = 1;
+let totalCount = 0;
+let searchTerm = '';
+let navFilter = '';
+let debounceTimer = null;
+ 
+function headers(){return{'apikey':SUPABASE_KEY,'Authorization':'Bearer '+SUPABASE_KEY,'Content-Type':'application/json'}}
+ 
+async function fetchStats(){
+  try{
+    const r = await fetch(`${SUPABASE_URL}/rest/v1/pecas?select=quantidade_estoque,fabricante`,{headers:headers()});
+    const data = await r.json();
+    if(!Array.isArray(data)) return;
+    document.getElementById('hero-total').textContent = data.length.toLocaleString('pt-BR');
+    const fabs = new Set(data.map(d=>d.fabricante).filter(Boolean));
+    document.getElementById('hero-fab').textContent = fabs.size;
+    const inStock = data.filter(d=>d.quantidade_estoque>0).length;
+    document.getElementById('hero-stock').textContent = inStock.toLocaleString('pt-BR');
+  }catch(e){}
+}
+ 
+function buildQuery(){
+  let q = `${SUPABASE_URL}/rest/v1/pecas?select=*`;
+  const filters = [];
+  if(searchTerm) filters.push(`or=(nome_peca.ilike.*${searchTerm}*,codigo_sku.ilike.*${searchTerm}*,fabricante.ilike.*${searchTerm}*)`);
+  const fab = document.getElementById('filter-fab')?.value.trim();
+  if(fab) filters.push(`fabricante=ilike.*${fab}*`);
+  const sku = document.getElementById('filter-sku')?.value.trim();
+  if(sku) filters.push(`codigo_sku=ilike.*${sku}*`);
+  const pmin = document.getElementById('filter-preco-min')?.value;
+  if(pmin) filters.push(`preco_venda=gte.${pmin}`);
+  const pmax = document.getElementById('filter-preco-max')?.value;
+  if(pmax) filters.push(`preco_venda=lte.${pmax}`);
+  const stk = document.getElementById('filter-stock')?.value;
+  if(stk==='in') filters.push('quantidade_estoque=gte.10');
+  else if(stk==='low') filters.push('quantidade_estoque=gte.1&quantidade_estoque=lte.9');
+  else if(stk==='out') filters.push('quantidade_estoque=eq.0');
+  filters.forEach(f=>{ q+='&'+f; });
+  const sort = document.getElementById('sort-by')?.value||'nome';
+  const sortMap={nome:'nome_peca.asc','nome-desc':'nome_peca.desc',preco:'preco_venda.asc','preco-desc':'preco_venda.desc',estoque:'quantidade_estoque.desc'};
+  q+=`&order=${sortMap[sort]||'nome_peca.asc'}`;
+  return q;
+}
+ 
+async function loadParts(){
+  const grid = document.getElementById('parts-grid');
+  grid.innerHTML = '<div class="loading"><div class="loading-spinner"></div><div class="loading-txt">CARREGANDO...</div></div>';
+  try{
+    const countQ = buildQuery().replace('select=*','select=codigo_sku')+'&limit=1';
+    const countRes = await fetch(countQ,{headers:{...headers(),'Prefer':'count=exact'}});
+    totalCount = parseInt(countRes.headers.get('content-range')?.split('/')[1]||'0');
+    document.getElementById('result-count').textContent = `${totalCount.toLocaleString('pt-BR')} peças encontradas`;
+    const offset = (currentPage-1)*PAGE_SIZE;
+    const dataQ = buildQuery()+`&limit=${PAGE_SIZE}&offset=${offset}`;
+    const res = await fetch(dataQ,{headers:headers()});
+    const parts = await res.json();
+    if(!Array.isArray(parts)||parts.length===0){
+      grid.innerHTML='<div class="empty"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg><div class="empty-txt">Nenhuma peça encontrada</div><div class="empty-sub">Tente outros termos de busca</div></div>';
+      renderPagination();return;
+    }
+    grid.innerHTML = parts.map(p=>renderCard(p)).join('');
+    renderPagination();
+  }catch(e){
+    grid.innerHTML='<div class="empty"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg><div class="empty-txt">Erro ao carregar</div><div class="empty-sub">Verifique a conexão com o servidor</div></div>';
+  }
+}
+ 
+function stockStatus(qty){
+  if(qty>=10) return {cls:'in',txt:'Em estoque'};
+  if(qty>=1) return {cls:'low',txt:'Estoque baixo'};
+  return {cls:'out',txt:'Indisponível'};
+}
+ 
+function renderCard(p){
+  const st = stockStatus(p.quantidade_estoque||0);
+  const preco = parseFloat(p.preco_venda||0).toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
+  const name = p.nome_peca||'—';
+  const fab = (p.fabricante||'').toUpperCase();
+  const sku = p.codigo_sku||'—';
+  const loc = p.localizacao_corredor||'—';
+  const qty = p.quantidade_estoque||0;
+  const safeP = JSON.stringify(p).replace(/'/g,"\\'");
+  return `<div class="part-card" onclick='openModal(${JSON.stringify(p)})'>
+    <div class="card-img">
+      <div class="card-img-placeholder">
+        <svg viewBox="0 0 24 24"><path d="M13 2.05v2.02c3.95.49 7 3.85 7 7.93 0 3.21-1.81 6-4.72 7.28L13 17v5h5l-1.22-1.22C19.91 19.07 22 15.76 22 12c0-5.18-3.95-9.45-9-9.95zM11 2.05C5.95 2.55 2 6.82 2 12c0 3.76 2.09 7.07 5.22 8.78L6 22h5v-5l-2.28 2.28C7.81 18 6 15.21 6 12c0-4.08 3.05-7.44 7-7.93V2.05z"/></svg>
+        <span>AUTOPEÇA</span>
+      </div>
+      <div class="card-sku">${sku}</div>
+      <div class="card-stock ${st.cls}">${st.txt}</div>
+    </div>
+    <div class="card-body">
+      <div class="card-fab">${fab}</div>
+      <div class="card-name">${name}</div>
+      <div class="card-loc"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>${loc}</div>
+      <div class="card-bottom">
+        <div><div class="card-price-lbl">Preço</div><div class="card-price">${preco}</div></div>
+        <div class="card-qty"><div style="color:var(--text);font-size:8px;letter-spacing:.5px;margin-bottom:2px">ESTOQUE</div><div class="card-qty-val">${qty}</div></div>
+      </div>
+    </div>
+  </div>`;
+}
+ 
+function renderPagination(){
+  const pg = document.getElementById('pagination');
+  const total = Math.ceil(totalCount/PAGE_SIZE);
+  if(total<=1){pg.innerHTML='';return;}
+  let html='';
+  html+=`<button class="pg-btn" onclick="goPage(${currentPage-1})" ${currentPage===1?'disabled':''}>← Anterior</button>`;
+  const start=Math.max(1,currentPage-2),end=Math.min(total,currentPage+2);
+  if(start>1){html+=`<button class="pg-btn" onclick="goPage(1)">1</button>`;if(start>2)html+=`<span class="pg-info">...</span>`;}
+  for(let i=start;i<=end;i++) html+=`<button class="pg-btn ${i===currentPage?'active':''}" onclick="goPage(${i})">${i}</button>`;
+  if(end<total){if(end<total-1)html+=`<span class="pg-info">...</span>`;html+=`<button class="pg-btn" onclick="goPage(${total})">${total}</button>`;}
+  html+=`<button class="pg-btn" onclick="goPage(${currentPage+1})" ${currentPage===total?'disabled':''}>Próxima →</button>`;
+  pg.innerHTML=html;
+}
+ 
+function goPage(p){
+  const total=Math.ceil(totalCount/PAGE_SIZE);
+  if(p<1||p>total)return;
+  currentPage=p;
+  loadParts();
+  window.scrollTo({top:document.querySelector('.main-wrap').offsetTop-60,behavior:'smooth'});
+}
+ 
+function onMainSearch(){
+  clearTimeout(debounceTimer);
+  debounceTimer=setTimeout(()=>{searchTerm=document.getElementById('main-search').value.trim();currentPage=1;loadParts();},400);
+}
+ 
+function doSearch(){searchTerm=document.getElementById('main-search').value.trim();currentPage=1;loadParts();}
+ 
+function applyFilters(){clearTimeout(debounceTimer);debounceTimer=setTimeout(()=>{currentPage=1;loadParts();},400);}
+ 
+function clearFilters(){
+  document.getElementById('filter-fab').value='';
+  document.getElementById('filter-sku').value='';
+  document.getElementById('filter-preco-min').value='';
+  document.getElementById('filter-preco-max').value='';
+  document.getElementById('filter-stock').value='';
+  document.getElementById('sort-by').value='nome';
+  document.getElementById('main-search').value='';
+  searchTerm='';navFilter='';currentPage=1;
+  document.querySelectorAll('.nav-item').forEach((n,i)=>{n.classList.toggle('active',i===0);});
+  loadParts();
+}
+ 
+function setNav(el,cat){
+  document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
+  el.classList.add('active');
+  navFilter=cat;
+  document.getElementById('filter-fab').value='';
+  searchTerm=cat;
+  document.getElementById('main-search').value=cat;
+  currentPage=1;loadParts();
+}
+ 
+function openModal(p){
+  const st=stockStatus(p.quantidade_estoque||0);
+  const preco=parseFloat(p.preco_venda||0).toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
+  document.getElementById('m-sku').textContent=p.codigo_sku||'—';
+  document.getElementById('m-name').textContent=p.nome_peca||'—';
+  document.getElementById('m-fab').textContent=p.fabricante||'—';
+  document.getElementById('m-preco').textContent=preco;
+  document.getElementById('m-qty').textContent=p.quantidade_estoque||0;
+  const statusEl=document.getElementById('m-status');
+  statusEl.textContent=st.txt;
+  statusEl.className='mf-val '+(st.cls==='in'?'green':st.cls==='low'?'amber':'red-c');
+  document.getElementById('m-loc').textContent=p.localizacao_corredor||'—';
+  document.getElementById('modal-bg').classList.add('open');
+}
+function closeModal(e){if(e.target===document.getElementById('modal-bg'))closeModalBtn();}
+function closeModalBtn(){document.getElementById('modal-bg').classList.remove('open');}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModalBtn();});
+ 
+fetchStats();
+loadParts();
+</script>
+</body>
+</html>
